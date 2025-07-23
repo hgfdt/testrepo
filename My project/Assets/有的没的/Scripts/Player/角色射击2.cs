@@ -16,7 +16,7 @@ public class 角色射击2 : MonoBehaviour
     }
     void 尝试射击() 
     {
-        if (gameObject.activeInHierarchy)
+        if (true)//gameObject.activeInHierarchy
         {
             射击();
         }
@@ -62,7 +62,7 @@ public class 角色射击2 : MonoBehaviour
         GetComponent<LineRenderer>().enabled = true;
     }
 
-    public GameObject 角色;
+    //public GameObject 角色;
     void 射线命中()
     {
         transform.Find("HitParticles").position=射线碰撞点的信息.point;

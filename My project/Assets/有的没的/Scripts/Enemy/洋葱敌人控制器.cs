@@ -25,11 +25,15 @@ public class 洋葱敌人控制器 : MonoBehaviour
     Vector3 目的地;
     NavMeshAgent 寻路组件;
     Animator 动画组件;
+    数据组件 数据组件;
+    float 当前cd;
+    bool 暴击了;
     private void Awake()
     {
         寻路组件 = GetComponent<NavMeshAgent>();
         追击速度 = 寻路组件.speed;
         动画组件 = GetComponent<Animator>();
+        数据组件 = GetComponent<数据组件>();
     }
     //------------------------------------------------------
     
@@ -52,6 +56,7 @@ public class 洋葱敌人控制器 : MonoBehaviour
     {
         切换状态();
         切换动画();
+        当前cd-=Time.deltaTime;
     }
     
     
@@ -147,7 +152,20 @@ public class 洋葱敌人控制器 : MonoBehaviour
                     战斗状态 = true;
                     寻路组件.speed = 追击速度;
                     追玩家 = true;
+                    //寻路组件.isStopped = false;
                     寻路组件.destination = 攻击目标.transform.position;
+                }
+                if (玩家在近战攻击范围内()||玩家在远程攻击范围内())
+                {
+                    //追玩家 = false;
+                    //寻路组件.isStopped = true;
+                    if (当前cd<0)
+                    {
+                        当前cd = 数据组件.攻击数据.cd冷却时间;
+
+                        
+                        攻击();
+                    }
                 }
                 break;
             case 敌人状态.死亡:
@@ -185,6 +203,29 @@ public class 洋葱敌人控制器 : MonoBehaviour
         }
         攻击目标 = null;
         return false;
+    }
+    bool 玩家在近战攻击范围内()
+    {
+        return 攻击目标 != null && Vector3.Distance(transform.position, 攻击目标.transform.position) <= 数据组件.攻击数据.近战攻击距离;
+    }
+    bool 玩家在远程攻击范围内()
+    {
+        return 攻击目标 != null && Vector3.Distance(transform.position, 攻击目标.transform.position) <= 数据组件.攻击数据.远程攻击距离;
+    }
+    void 攻击()
+    {   
+        transform.LookAt(攻击目标.transform.position);
+        
+        暴击了 = Random.value < 数据组件.攻击数据.暴击几率;
+        动画组件.SetBool("暴击了", 暴击了);
+        if (玩家在近战攻击范围内())
+        {
+            动画组件.SetTrigger("攻击");
+        }
+        if (玩家在远程攻击范围内())
+        {
+            动画组件.SetTrigger("攻击");
+        }
     }
     Vector3 获取范围内的随机点(Vector3 中心, float 范围)
     {

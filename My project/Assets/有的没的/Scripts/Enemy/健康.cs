@@ -17,7 +17,7 @@ public class 健康 : MonoBehaviour
     public int 血量 = 100;
     public static int 分数;
     
-    void Start()
+    void Awake()
     {
         声音组件 = GetComponent<AudioSource>();
         动画组件 = GetComponent<Animator>();
@@ -90,7 +90,7 @@ public class 健康 : MonoBehaviour
         Component[] 组件s = GetComponents<Component>();
         foreach (Component 组件 in 组件s)
         {
-            if (组件 == this || 组件.GetType() == typeof(CapsuleCollider) || 组件.GetType() == typeof(Transform))
+            if (组件 == this || 组件.GetType() == typeof(SphereCollider) || 组件.GetType() == typeof(Transform))
             {
 
             }

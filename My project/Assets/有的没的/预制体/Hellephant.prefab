@@ -9963,12 +9963,12 @@ SphereCollider:
     serializedVersion: 2
     m_Bits: 0
   m_LayerOverridePriority: 0
-  m_IsTrigger: 1
+  m_IsTrigger: 0
   m_ProvidesContacts: 0
-  m_Enabled: 0
+  m_Enabled: 1
   serializedVersion: 3
-  m_Radius: 1.65
-  m_Center: {x: 0, y: 1.2, z: 0}
+  m_Radius: 1.2
+  m_Center: {x: 0, y: 1, z: 0}
 --- !u!136 &6344113088922113660
 CapsuleCollider:
   m_ObjectHideFlags: 0
@@ -9986,7 +9986,7 @@ CapsuleCollider:
   m_LayerOverridePriority: 0
   m_IsTrigger: 0
   m_ProvidesContacts: 0
-  m_Enabled: 1
+  m_Enabled: 0
   serializedVersion: 2
   m_Radius: 1
   m_Height: 2.5
@@ -10038,7 +10038,6 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 297f6934792bd434280ee6613b8d686e, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  "\u53D7\u4F24\u58F0": {fileID: 8300000, guid: fce027b40770a44298a6f5a4233bfb04, type: 3}
   "\u6B7B\u4EA1\u58F0": {fileID: 8300000, guid: 8c615fd0429f34edf85539d70279360d, type: 3}
   "\u8840\u91CF": 100
 --- !u!82 &6752263453134943085

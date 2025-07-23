@@ -7,7 +7,7 @@ public class 角色移动 : MonoBehaviour       //PlayerMovement
     public GameObject 摄像头;
 
     
-    void Update()
+    void FixedUpdate()
     {
         //this.GetComponent<Rigidbody>().MovePosition(
         //    transform.position
