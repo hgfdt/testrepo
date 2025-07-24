@@ -159,7 +159,7 @@ public class 洋葱敌人控制器 : MonoBehaviour
                 {
                     //追玩家 = false;
                     //寻路组件.isStopped = true;
-                    if (当前cd<0)
+                    if (当前cd<=0)
                     {
                         当前cd = 数据组件.攻击数据.cd冷却时间;
 

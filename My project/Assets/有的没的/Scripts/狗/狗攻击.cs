@@ -48,7 +48,8 @@ public class 狗攻击 : MonoBehaviour
         //寻路组件.isStopped = true;
         //if (攻击CD < 0)
         //{
-            动画组件.SetTrigger("攻击");
+        动画组件.SetBool("暴击了", Random.value < 数据组件.攻击数据.暴击几率);
+        动画组件.SetTrigger("攻击");
         //    攻击CD = 0.5f;
         //}
     }
